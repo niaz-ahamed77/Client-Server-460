@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid p-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Fitness calculator
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="bmi-tab" data-bs-toggle="tab" data-bs-target="#bmi" role="tab" aria-controls="bmi" aria-selected="true">BMI</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="bodyfat-tab" data-bs-toggle="tab" data-bs-target="#bodyfat" role="tab" aria-controls="bodyfat" aria-selected="false">Bodyfat</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="ideal-weight-tab" data-bs-toggle="tab" data-bs-target="#ideal-weight" role="tab" aria-controls="ideal-weight" aria-selected="false">Ideal Weight</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="calories-burned-tab" data-bs-toggle="tab" data-bs-target="#calories-burned" role="tab" aria-controls="calories-burned" aria-selected="false">Calories Burned</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="bmi" role="tabpanel" aria-labelledby="bmi-tab">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Calculate body mass index
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Enter the weight (kg) and height (cm)</h5>
+                                        <input type="number" id="weight" placeholder="Weight in kg">
+                                        <input type="number" id="height" placeholder="Height in cm">
+                                        <button type="button" onClick="calculateBMI()">Calculate BMI</button>
+                                        <p id="bmi-result"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="bodyfat" role="tabpanel" aria-labelledby="bodyfat-tab">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Calculate body fat percentage
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Enter the following measurements</h5>
+                                        <input type="number" id="height-fat" placeholder="Height in cm">
+                                        <input type="number" id="neck-fat" placeholder="Neck in cm">
+                                        <input type="number" id="waist-fat" placeholder="Waist in cm">
+                                        <input type="number" id="hips-fat" placeholder="Hips in cm">
+                                        <button type="button" onClick="calculateBodyFat()">Calculate Body Fat</button>
+                                        <p id="bodyfat-result"></p>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="tab-pane fade" id="ideal-weight" role="tabpanel" aria-labelledby="ideal-weight-tab">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Calculate ideal weight
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Enter your height</h5>
+                                        <input type="number" id="height-ideal" placeholder="Height in cm">
+                                        <button type="button" onClick="calculateIdealWeight()">Calculate Ideal Weight</button>
+                                        <p id="idealweight-result"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="calories-burned" role="tabpanel" aria-labelledby="calories-burned-tab">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Calculate calories burned
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Enter the following data</h5>
+                                        <input type="number" id="weight-burned" placeholder="Weight in kg">
+                                        <input type="number" id="duration-burned" placeholder="Duration in minutes">
+                                        <select id="activity-burned">
+                                            <option value="3.5">Walking, moderate pace</option>
+                                            <option value="6.0">Jogging</option>
+                                            <option value="7.0">Bicycling, moderate speed</option>
+                                            <option value="8.0">Swimming, moderate effort</option>
+                                            <option value="9.5">Running, 6 mph</option>
+                                        </select>
+                                        <button type="button" onClick="calculateCaloriesBurned()">Calculate Calories Burned</button>
+                                        <p id="caloriesburned-result"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        $('#myTab a').click(function (event) {
+            event.preventDefault();
+            $(this).tab('show');
+
+            $('.tab-pane').removeClass('show active');
+
+            $($(this).attr('data-bs-target')).addClass('show active');
+        });
+    });
+
+    function calculateBMI() {
+        const weight = $('#weight').val();
+        const height = $('#height').val();
+        
+        if(weight && height) {
+        $.ajax({
+            url: `http://localhost:3000/bmi?height=${height}&weight=${weight}`,
+            type: 'GET',
+            success: function(result) {
+            $('#bmi-result').text(`Your BMI is ${result.bmi}`);
+            },
+            error: function(error) {
+            $('#bmi-result').text('Error calculating BMI. Please try again.');
+            }
+        });
+        } else {
+        $('#bmi-result').text('Please enter both weight and height.');
+        }
+    }
+
+    function calculateBodyFat() {
+        const height = $('#height-fat').val();
+        const neck = $('#neck-fat').val();
+        const waist = $('#waist-fat').val();
+        const hips = $('#hips-fat').val();
+
+        if(height && neck && waist && hips) {
+            $.ajax({
+                url: `http://localhost:3000/bodyfat?height=${height}&neck=${neck}&waist=${waist}&hips=${hips}`,
+                type: 'GET',
+                success: function(result) {
+                    $('#bodyfat-result').text(`Your body fat percentage is ${result.bodyFat}`);
+                },
+                error: function(error) {
+                    $('#bodyfat-result').text('Error calculating body fat. Please try again.');
+                }
+            });
+        } else {
+            $('#bodyfat-result').text('Please enter all measurements.');
+        }
+    }
+
+    function calculateIdealWeight() {
+        const height = $('#height-ideal').val();
+
+        if(height) {
+            $.ajax({
+                url: `http://localhost:3000/idealweight?height=${height}`,
+                type: 'GET',
+                success: function(result) {
+                    $('#idealweight-result').text(`Your ideal weight is ${result.idealWeight} kg`);
+                },
+                error: function(error) {
+                    $('#idealweight-result').text('Error calculating ideal weight. Please try again.');
+                }
+            });
+        } else {
+            $('#idealweight-result').text('Please enter your height.');
+        }
+    }
+
+    function calculateCaloriesBurned() {
+        const weight = $('#weight-burned').val();
+        const duration = $('#duration-burned').val();
+        const met = $('#activity-burned').val();
+
+        if(weight && duration && met) {
+            $.ajax({
+                url: `http://localhost:3000/caloriesburned?weight=${weight}&duration=${duration}&met=${met}`,
+                type: 'GET',
+                success: function(result) {
+                    $('#caloriesburned-result').text(`You have burned ${result.caloriesBurned} calories`);
+                },
+                error: function(error) {
+                    $('#caloriesburned-result').text('Error calculating calories burned. Please try again.');
+                }
+            });
+        } else {
+            $('#caloriesburned-result').text('Please enter weight, duration and select an activity.');
+        }
+    }
+</script>
+
+<style>
+    body {
+        background-image: url('grass.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+    .card-body {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px; /* 5px rounded corners */
+        padding: 2em;
+        margin: 2em;
+    }
+    .card-body:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+    .btn-primary:hover {
+        background-color: #0069d9;
+        color: white;
+    }
+    .nav-tabs .nav-link:hover {
+        background-color: #f0f0f0;
+        color: #333333;
+    }
+</style>
